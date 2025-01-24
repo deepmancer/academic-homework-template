@@ -23,7 +23,7 @@ Below are a few slide previews to showcase the template’s design:
 | **Slide Section**         | **Preview**                                                                               |
 |---------------------------|-------------------------------------------------------------------------------------------|
 | **Title Page**            | ![Title Page](https://raw.githubusercontent.com/deepmancer/academic-homework-template/main/assets/samples/titlepage.png) |
-| **Body Example**         | ![Image Slide](https://raw.githubusercontent.com/deepmancer/academic-homework-template/main/assets/samples/sample-image.png) |
+| **Body Example**         | ![Image Slide](https://raw.githubusercontent.com/deepmancer/academic-homework-template/main/assets/samples/sample-page.png) |
 | **References**            | ![References Slide](https://raw.githubusercontent.com/deepmancer/academic-homework-template/main/assets/samples/references.png) |
 
 ---
