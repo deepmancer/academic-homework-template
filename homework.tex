@@ -1,0 +1,25 @@
+\documentclass[a4paper,12pt]{article}
+
+% ---- Configuration and Setup ----
+% Load necessary configuration files that define metadata, packages, and custom commands
+\input{./configuration/packages.tex}     % Package loading for document styling and functionality
+\input{./configuration/variables.tex}    % Metadata, funding, and expense variables
+\input{./configuration/configs.tex}      % General document configuration settings
+\input{./configuration/commands.tex}     % Custom command definitions
+
+% ---- Document Begins Here ----
+\begin{document}
+
+\input{titlepage.tex}
+
+\pagenumbering{arabic}  % Reset page numbering to Arabic numerals for main content
+\setcounter{page}{1}    % Start main content page numbering from 1  
+
+% ---- Solution to Problems ----
+\input{problems/q1}
+
+% ---- References ----
+\nocite{*}              % Comment this line if you are not using any references
+\printbibliography
+
+\end{document}
