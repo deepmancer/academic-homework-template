@@ -1,0 +1,162 @@
+\problem{1}
+
+\small
+
+\textbf{Preliminaries:}
+
+\noindent
+We consider a binary classification task with two classes: positive (\(\textit{pos}\)) and negative (\(\textit{neg}\)). The following quantities are defined:
+
+\begin{itemize}
+    \item \(N_{\text{pos}}\): Number of positive instances,
+    \item \(N_{\text{neg}}\): Number of negative instances,
+    \item \(r = \dfrac{N_{\text{neg}}}{N_{\text{pos}}}\): Class imbalance ratio (negatives to positives).
+\end{itemize}
+
+\noindent A classification outcome can be summarized via the confusion matrix:
+
+\begin{table}[!ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{c|c|c|c|}
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{\textbf{Predicted}} \\
+    \cline{3-4}
+    \multicolumn{2}{c|}{} 
+       & \cellcolor{green!25}\textbf{Positive} 
+       & \cellcolor{red!25}\textbf{Negative} \\
+    \cline{2-4}
+    \multirow{2}{*}{\textbf{Actual}} 
+       & \cellcolor{green!25}\textbf{Positive} & TP & FN \\ 
+    \cline{2-4}
+       & \cellcolor{red!25}\textbf{Negative} & FP & TN \\ 
+    \cline{2-4}
+    \end{tabular}
+\end{table}
+
+We define the following evaluation metrics:
+\begin{itemize}
+    \item \textbf{Recall (True Positive Rate)} 
+        \[
+            \text{Recall} = \text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}} 
+            = \frac{\text{TP}}{N_{\text{pos}}}.
+        \]
+    \item \textbf{Precision} 
+        \[
+            \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}.
+        \]
+    \item \textbf{F1 Score} 
+        \[
+            F_1 = 2 \,\frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}.
+        \]
+    \item \textbf{False Positive Rate}
+        \[
+            \text{FPR} = \frac{\text{FP}}{\text{FP} + \text{TN}} 
+            = \frac{\text{FP}}{N_{\text{neg}}}.
+        \]
+\end{itemize}
+
+For different thresholds on the classifier score, we define the following plots:
+
+\begin{itemize}
+    \item \textbf{PR Curve:} \(\text{Precision}\) vs.\ \(\text{Recall}\).
+    \item \textbf{ROC Curve:} \(\text{TPR}\) vs.\ \(\text{FPR}\).
+\end{itemize}
+
+\medskip
+
+
+\bigskip
+\solution
+\small
+Let us fix the \(\text{TPR} = \alpha\) and \(\text{FPR} = \beta\) as they are the properties of the classifier. These two metrics are \emph{normalized} by the class sizes \(N_{\text{pos}}\) and \(N_{\text{neg}}\), respectively:
+\[
+\alpha = \frac{\text{TP}}{N_{\text{pos}}}, 
+\qquad
+\beta = \frac{\text{FP}}{N_{\text{neg}}}.
+\]
+Because they measure \emph{rates} of correct or incorrect classification within each class, \(\alpha\) and \(\beta\) do not explicitly depend on the ratio \(r\). Consequently, for a chosen threshold (i.e.\ a chosen point on the ROC curve), \(\alpha\) and \(\beta\) can remain rather constant even as we vary the class imbalance ratio \(r = \frac{N_{\text{neg}}}{N_{\text{pos}}}\).
+
+\bigskip
+\noindent
+\textbf{Parametrizing Confusion Matrix Entries:}
+
+Assume \(N_{\text{neg}} = r\,N_{\text{pos}}\). Then the confusion matrix would be:
+
+\begin{table}[!ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{c|c|c|c|}
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{\textbf{Predicted}} \\
+    \cline{3-4}
+    \multicolumn{2}{c|}{} 
+       & \cellcolor{green!25}\textbf{Positive} 
+       & \cellcolor{red!25}\textbf{Negative} \\
+    \cline{2-4}
+    \multirow{2}{*}{\textbf{Actual}} 
+       & \cellcolor{green!25}\textbf{Positive} & \(\alpha \, N_{\text{pos}}\) & \((1-\alpha)\, N_{\text{pos}}\) \\ 
+    \cline{2-4}
+       & \cellcolor{red!25}\textbf{Negative} & \(\beta \,r\, N_{\text{pos}}\) & \((1-\beta)\,r\, N_{\text{pos}}\) \\ 
+    \cline{2-4}
+    \end{tabular}
+\end{table}
+
+\noindent
+Using this, we derive the following for Precision, Recall, and F1 Score in terms of \(\alpha\), \(\beta\), and \(r\):
+
+\bigskip
+\noindent
+\textbf{Precision:}
+\[
+\text{Precision} 
+= \frac{\text{TP}}{\text{TP} + \text{FP}}
+= \frac{\alpha\, N_{\text{pos}}}{\alpha\,N_{\text{pos}} + \beta \,(r\, N_{\text{pos}})}
+= \frac{\alpha}{\alpha + \beta\,r}.
+\]
+
+\noindent
+\textbf{Recall (TPR):}
+\[
+\text{Recall} = \alpha \quad\text{(since } \alpha = \tfrac{\text{TP}}{N_{\text{pos}}}\text{)}.
+\]
+
+\noindent
+\textbf{F1 Score:}
+\[
+F_{1}
+= 2 \,\frac{\text{Precision}\,\times\,\text{Recall}}{\text{Precision} + \text{Recall}}
+= 2 \,\frac{\bigl(\tfrac{\alpha}{\alpha + \beta\,r}\bigr)\,\alpha} 
+{\bigl(\tfrac{\alpha}{\alpha + \beta\,r}\bigr) + \alpha}
+\,=\,
+\frac{2\,\alpha}{2\,\alpha + \beta\,r}.
+\]
+
+\bigskip
+\paragraph{Sensitivity of PR Metrics (Precision, F1) to Imbalance}
+
+\begin{itemize}
+    \item \textbf{Precision} \(= \dfrac{\alpha}{\alpha + \beta r}\):
+    As \(r\) grows large (i.e.\ many more negatives than positives), the term \(\beta r\) can dominate the denominator unless \(\beta\) is driven extremely close to zero. Thus, even if \(\beta\) is small, the large product \(\beta\,r\) makes Precision plummet. 
+    \item \textbf{F1 Score}: 
+    Similarly, the F1 Score depends on \(r\) in the denominator. As \(r\) increases, the denominator grows, which reduces the \(F_1\) score.
+\end{itemize}
+
+Hence, PR-based metrics explicitly reflect how the minority (positive) class is being detected relative to the potentially huge negative class. Small \(\beta\) can still yield large absolute \(\text{FP}\), which greatly impacts Precision and thus reduces \(F_1\).
+
+\medskip
+\paragraph{ROC Curve: Insensitivity to \(r\)}
+
+The ROC curve plots:
+\[
+(\text{FPR}, \text{TPR}) \;=\; (\beta, \alpha).
+\]
+Neither \(\alpha\) nor \(\beta\) is multiplied by \(r\). Thus for the \emph{same} \(\alpha\) and \(\beta\), the ROC curve \emph{does not change} as \(r\) varies. Even if \(r\) becomes very large, the \(\text{FPR}\) remains the same \(\beta\). Consequently, one can have a deceptively high Area Under the ROC Curve (AUC) while still missing the minority class in absolute terms. This insensitivity arises because \(\text{FPR}\) is normalized by \(N_{\text{neg}}\), so it remains “locally small” even if \(N_{\text{neg}}\) itself is huge.
+
+\bigskip
+To summarize:
+\vspace{-1em}
+\begin{itemize}
+    \item \textbf{PR curve and F1 score are sensitive to class imbalance.} The denominators of these metrics depend on the absolute number of false positives, which scales with \(N_{\text{neg}}\). As \(r = \tfrac{N_{\text{neg}}}{N_{\text{pos}}}\) increases, Precision and F1 score can drop significantly even if the \(\text{FPR}\) remains constant. Thus, these metrics are directly affected by class imbalance.
+    \item \textbf{ROC curve is relatively insensitive to class imbalance.} The ROC curve plots \(\text{TPR} = \tfrac{\text{TP}}{N_{\text{pos}}}\) against \(\text{FPR} = \tfrac{\text{FP}}{N_{\text{neg}}}\). For fixed \(\alpha\) and \(\beta\), changing \(r\) does not alter the ROC point \((\beta, \alpha)\). Therefore, a model can appear to perform well on the ROC curve even under high class imbalance, potentially masking poor Precision and low F1 scores.
+\end{itemize}
+
+\clearpage
