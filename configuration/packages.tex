@@ -1,0 +1,95 @@
+% configuration/packages.tex
+% Purpose: Load necessary packages for the document
+
+% ------------------------
+% ENCODING AND LANGUAGE PACKAGES
+% ------------------------
+\usepackage[T1]{fontenc}            % Font encoding for international characters
+\usepackage{lmodern}                % Latin Modern fonts for better scalability and embedding
+\usepackage[utf8]{inputenc}         % Input encoding for international characters
+
+% ------------------------
+% DOCUMENT LAYOUT AND SPACING
+% ------------------------
+\usepackage[margin=1in]{geometry}   % Adjust margins
+\usepackage{parskip}                % Paragraph layout
+\usepackage{setspace}               % Line spacing
+\usepackage{emptypage}              % Insert empty pages
+\usepackage{multicol}               % Multiple columns
+\usepackage{multirow}               % Multi-row cells in tables
+\usepackage{afterpage}              % Control page content
+
+% ------------------------
+% COLOR AND GRAPHICS
+% ------------------------
+\usepackage[table, xcdraw]{xcolor}  % Colored elements and tables
+\usepackage{graphicx}               % Image handling
+\usepackage{transparent}            % Image transparency
+\usepackage{eso-pic}                % Background images
+\usepackage{subfig}                 % Grouped subfigures
+\usepackage{tikz}                   % High-quality handmade figures
+\usepackage{float}                  % Precise float positioning
+\usepackage{epstopdf}               % EPS to PDF conversion
+
+% ------------------------
+% BIBLIOGRAPHY
+% ------------------------
+\usepackage[
+    backend=biber,
+    style=ieee,
+]{biblatex}                        % Bibliography management
+\addbibresource{references.bib}    % Bibliography file
+
+% ------------------------
+% MATH PACKAGES
+% ------------------------
+\usepackage{amsmath, amsthm, amssymb, amsfonts}  % AMS math packages
+\usepackage{bm}                                  % Bold math symbols
+\usepackage[overload]{empheq}                    % Braced-style systems of equations
+\usepackage{fix-cm}                              % Override LaTeX size restrictions
+\usepackage{thmtools}                            % Theorem customization
+
+% ------------------------
+% TABLES
+% ------------------------
+\usepackage{array}                % Column width definition
+\usepackage{booktabs}             % Professional horizontal lines
+\usepackage{caption}              % Caption customization
+\usepackage{colortbl}             % Colored tables
+\usepackage{longtable}            % Multi-page tables
+\usepackage{makecell}             % Customized cell formatting
+\usepackage{tabularx}             % Flexible-width tables
+\usepackage{threeparttable}       % Tables with notes
+
+% ------------------------
+% ALGORITHMS (PSEUDO-CODE)
+% ------------------------
+\usepackage{algorithm}            % Algorithm environment
+\usepackage{algorithmic}          % Algorithmic commands
+
+% ------------------------
+% HEADERS AND FOOTERS
+% ------------------------
+\usepackage{fancyhdr}             % Custom headers and footers
+\usepackage{lastpage}             % Reference to the last page
+\usepackage{footmisc}             % Footnote customization
+
+% ------------------------
+% PDF HANDLING
+% ------------------------
+\usepackage{pdfpages}             % Include PDF files
+\usepackage{tcolorbox}            % Colored boxes for text highlights
+
+% ------------------------
+% HYPERLINKS AND REFERENCES
+% ------------------------
+\usepackage{hyperref}             % Hyperlinks in document
+\usepackage{bookmark}             % PDF bookmarks
+\usepackage{cleveref}             % Improved cross-references
+
+% ------------------------
+% MISCELLANEOUS
+% ------------------------
+\usepackage{fontawesome5}         % Font Awesome icons
+\usepackage{textcomp}             % Additional text symbols
+\usepackage{lipsum}               % Dummy text
