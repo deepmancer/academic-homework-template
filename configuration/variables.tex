@@ -1,0 +1,53 @@
+% configuration/variables.tex
+% Purpose: This file contains the variables such as university name, course name, student name, etc. that are used throughout the document.
+
+% ---- University Information ----
+\newcommand{\universityName}{University of LaTeX}
+\newcommand{\departmentName}{Department of Computer Science}
+
+% ---- Course Information ----
+\newcommand{\courseNumber}{CS\;101}
+\newcommand{\courseName}{Introduction to Computer Science}
+\newcommand{\academicTerm}{Fall 2025}
+\newcommand{\instructor}{Professor Jane Doe}
+
+% ---- Assignment Information ----
+\newcommand{\assignmentNumber}{1}
+\newcommand{\assignmentAbbrv}{HW\assignmentNumber}
+\newcommand{\assignment}{Homework\;\assignmentNumber}
+\newcommand{\dueDate}{September 30, 2025}
+\newcommand{\submissionDate}{\today}
+
+% ---- Student Information ----
+\newcommand{\studentName}{John Smith}
+\newcommand{\studentEmail}{john.smith@example.edu}
+\newcommand{\studentId}{123456789}
+
+% ---- Logo Information ----
+\newcommand{\logopath}{assets/university_logo.png}
+\newcommand{\logowidth}{1.3in}
+
+% ---- Header and Title Information ----
+\newcommand{\headerText}{\courseNumber\;-\;\assignmentAbbrv}
+\newcommand{\documentTitle}{\courseNumber \; \assignment\; - \; \studentName}
+
+% ---- Document Metadata ----
+\title{\documentTitle}
+\author{\studentName}
+\date{\today}
+
+% ---- Main Color ----
+\definecolor{darkRed}{rgb}{0.643, 0.114, 0.220}
+
+% Hyperref setup
+\hypersetup{
+    bookmarks=true,
+    colorlinks=true, 
+    linkcolor=darkRed, 
+    citecolor=darkRed, 
+    filecolor=darkRed, 
+    urlcolor=darkRed,  
+    pdfborder={0 0 0},
+    pdftitle={\documentTitle},
+    pdfauthor={\studentName},
+}
