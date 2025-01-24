@@ -1,0 +1,29 @@
+% configuration/commands.tex
+% Purpose: Customizes header, footer, and title page for the academic homework template
+
+% ---- Header and Footer Setup ----
+\pagestyle{fancy}
+\fancyhf{}  % Clear all header and footer fields
+
+% Header settings
+\fancyhead[L]{\textsc{\headerText}}  % Left header: Document title in small caps
+\fancyhead[R]{\textit{\nouppercase{\studentName}}}  % Right header: Student name in italics, no forced uppercase
+
+% Footer settings
+\fancyfoot[C]{\thepage}  % Page number in the center of the footer
+
+% Additional settings
+\renewcommand{\headrulewidth}{0.4pt}  % Line under the header for a subtle, clean boundary
+\renewcommand{\footrulewidth}{0pt}    % No line under the footer to keep it clean
+
+% Define header for plain pages (e.g., chapter starting pages)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% ---- Title Page Customizations ----
+\newcommand{\problem}[1]{\large{\textbf{Question #1}}\\[0.2cm]\addcontentsline{toc}{section}{Problem #1}\normalsize}
+\newcommand{\solution}{\large{\textcolor{darkRed}{\textbf{Solution}}}\\[0.2cm]\normalsize}
