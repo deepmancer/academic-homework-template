@@ -1,4 +1,4 @@
-# Academic Homework Template
+# Academic Homework LaTeX Template
 
 <div align="center">
   <img src="https://img.shields.io/badge/LaTeX-008080.svg?style=for-the-badge&logo=LaTeX&logoColor=white" alt="LaTeX">
